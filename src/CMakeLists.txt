@@ -3,7 +3,7 @@
 
 # Optionally glob, but only for CMake 3.12 or later:
 file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${Aqua3dUnderwaterOptics_SOURCE_DIR}/include/modern/*.hpp")
-file(GLOB SOURCE_LIST CONFIGURE_DEPENDS *.cpp)
+file(GLOB SOURCE_LIST CONFIGURE_DEPENDS *.cpp *.cu)
 
 # Make an automatic library - will be static or dynamic based on user setting
 add_library(underwater_simulator ${SOURCE_LIST} ${HEADER_LIST})

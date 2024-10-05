@@ -1,3 +1,3 @@
 #pragma once
 
-void intialize_cuda();
+void initialize_optix();
