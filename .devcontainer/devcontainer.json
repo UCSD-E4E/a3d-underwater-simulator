@@ -11,5 +11,8 @@
 				"ms-azuretools.vscode-docker"
 			]
 		}
-	}
+	},
+	"mounts": [
+		"source=${localEnv:HOME}/.ssh,target=/home/ubuntu/.ssh,type=bind,consistency=cached"
+	]
 }
