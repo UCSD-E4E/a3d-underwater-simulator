@@ -178,3 +178,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/linux,c,c++,windows,macos,visualstudiocode,cuda
 
 build/
+NVIDIA-OptiX-SDK-*.sh
