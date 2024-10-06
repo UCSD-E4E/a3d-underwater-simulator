@@ -1,6 +1,4 @@
 FROM nvidia/cuda:12.6.1-devel-ubuntu24.04
-ARG UID=1000
-ARG GID=1000
 
 SHELL ["/bin/bash", "-c"]
 
@@ -9,11 +7,7 @@ RUN apt-get update && apt-get install -y sudo \
                                         git \
                                         cmake
 
-RUN userdel ubuntu
-
-RUN addgroup --gid $GID ubuntu && \
-    adduser --uid $UID --gid $GID --disabled-password --gecos "" ubuntu && \
-    echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+RUN echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 ENV HOME="/home/ubuntu"
 RUN mkdir -p ${HOME}
@@ -24,7 +18,7 @@ RUN echo ${HOME}
 COPY NVIDIA-OptiX-SDK-*.sh ${HOME}
 RUN chmod +x ${HOME}/NVIDIA-OptiX-SDK-*.sh
 
-USER ${UID}:${GID}
+USER ubuntu
 RUN ${HOME}/NVIDIA-OptiX-SDK-*.sh --skip-license --include-subdir
 RUN rm ${HOME}/NVIDIA-OptiX-SDK-*.sh
 
