@@ -3,15 +3,19 @@
 #include <optix_stubs.h>
 #include <optix_function_table_definition.h>
 
-void initialize_optix() {
+#include "gpu/exceptions.hpp"
+
+OptixDeviceContext initializeOptix() {
     OptixDeviceContext context = nullptr;
 
     // Initialize CUDA with a no-op call to the the CUDA runtime API
-    cudaFree(0);
+    CUDA_CHECK(cudaFree(0));
 
     // Take the current context.
     CUcontext cuContext = 0;
-    optixInit();
+    OPTIX_CHECK(optixInit());
     OptixDeviceContextOptions options = {};
-    optixDeviceContextCreate(cuContext, &options, &context);
+    OPTIX_CHECK(optixDeviceContextCreate(cuContext, &options, &context));
+
+    return context;
 }
