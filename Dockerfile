@@ -22,5 +22,9 @@ USER ubuntu
 RUN ${HOME}/NVIDIA-OptiX-SDK-*.sh --skip-license --include-subdir
 RUN rm ${HOME}/NVIDIA-OptiX-SDK-*.sh
 
+ENV PATH=/usr/local/cuda/bin:${PATH}
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}
+ENV CPLUS_INCLUDE_PATH=/usr/local/cuda/include:${CPLUS_INCLUDE_PATH}
+
 ENV OptiX_INSTALL_DIR=${HOME}/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64
-ENV CPLUS_INCLUDE_PATH=${OptiX_INSTALL_DIR}/include
+ENV CPLUS_INCLUDE_PATH=${OptiX_INSTALL_DIR}/include:${CPLUS_INCLUDE_PATH}

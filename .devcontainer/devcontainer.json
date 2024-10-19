@@ -2,7 +2,9 @@
 	"build": { "dockerfile": "../Dockerfile" },
 	"remoteUser": "ubuntu",
 	"runArgs": [
-		"--gpus=all"
+		"--gpus=all",
+		"--runtime=nvidia",
+		"-e", "NVIDIA_DRIVER_CAPABILITIES=all"
 	],
 	"customizations": {
 		"vscode": {
